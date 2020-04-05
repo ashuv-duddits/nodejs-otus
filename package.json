@@ -1,0 +1,19 @@
+{
+  "name": "tree",
+  "version": "1.0.0",
+  "description": "show tree",
+  "main": "drawTree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashuv-duddits/nodejs-otus.git"
+  },
+  "author": "Aleksandr Shuvalov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashuv-duddits/nodejs-otus/issues"
+  },
+  "homepage": "https://github.com/ashuv-duddits/nodejs-otus#readme"
+}
