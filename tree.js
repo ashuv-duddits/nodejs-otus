@@ -16,24 +16,23 @@ const d = args.get('--depth') || args.get('-d') || 1;
 const directory = argv[0];
 
 (async () => {
-  try {
-    if (!directory) {
-      console.log('Error: You did not pass a single command line argument');
-      process.exit(1);
-    }
-    await existsAsync(directory);
-    if (!fs.statSync(directory).isDirectory()) {
-      console.log(`Error: directory: ${directory} does not exist`);
-      process.exit(1);
-    }
-    const json = {
-      name: path.parse(directory).name,
-      items: scanDir(directory, d)
-    };
-    console.log(json.name);
-    console.log(drawTree(json));
-  } catch (error) {
-    console.log(error.message);
+  if (!directory) {
+    console.log('Error: You did not pass a single command line argument');
     process.exit(1);
   }
+  const exists = await existsAsync(directory);
+  if (!exists) {
+    console.log(`Error: directory: ${directory} does not exist`);
+    return;
+  }
+  if (!fs.statSync(directory).isDirectory()) {
+    console.log(`Error: directory: ${directory} does not exist`);
+    process.exit(1);
+  }
+  const json = {
+    name: path.parse(directory).name,
+    items: scanDir(directory, d)
+  };
+  console.log(json.name);
+  console.log(drawTree(json));
 })();
