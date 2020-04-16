@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const drawTree = require('./drawTree');
-const scanDir = require('./scanDir');
+const drawTree = require('./lib/tree/drawTree');
+const scanDir = require('./lib/tree/scanDir');
 const existsAsync = require('./lib/existsAsync');
 
 const argv = process.argv.slice(2);

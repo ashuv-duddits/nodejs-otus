@@ -2,9 +2,10 @@
   "name": "tree",
   "version": "1.0.0",
   "description": "show tree",
-  "main": "drawTree.js",
+  "main": "lib/tree/drawTree.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tree": "node tree.js ./",
+    "gen": "node --max-old-space-size=50 gen.js"
   },
   "repository": {
     "type": "git",
