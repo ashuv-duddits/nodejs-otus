@@ -15,10 +15,10 @@ const d = args.get('--depth') || args.get('-d') || 1;
 
 const directory = argv[0];
 
-(async () => {
+const tree = async () => {
   if (!directory) {
     console.log('Error: You did not pass a single command line argument');
-    process.exit(1);
+    return;
   }
   const exists = await existsAsync(directory);
   if (!exists) {
@@ -26,8 +26,8 @@ const directory = argv[0];
     return;
   }
   if (!fs.statSync(directory).isDirectory()) {
-    console.log(`Error: directory: ${directory} does not exist`);
-    process.exit(1);
+    console.log(`Error: directory: ${directory} not a directory`);
+    return;
   }
   const json = {
     name: path.parse(directory).name,
@@ -35,4 +35,7 @@ const directory = argv[0];
   };
   console.log(json.name);
   console.log(drawTree(json));
-})();
+};
+
+tree();
+module.exports = tree;
